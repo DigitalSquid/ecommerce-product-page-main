@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   html {
     @apply font-kumbhSans text-grayishBlue;
   }
-  main::after {
+  .App::after {
     @apply content-[''] absolute w-screen h-screen bg-blackTransparent top-0 z-[-1] opacity-0 transition-opacity ease-in duration-200;
   }
   .nav-open::after {
@@ -15,8 +18,12 @@
     @apply -translate-x-0;
   }
 }
-@tailwind components;
-@tailwind utilities;
+
+@layer components {
+  .hidden-menu {
+    @apply fixed w-[66.67%] top-0 left-0 ease-in duration-200 z-10 -translate-x-full;
+  }
+}
 
 :root {
   color-scheme: light;

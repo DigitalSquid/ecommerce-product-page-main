@@ -1,28 +1,22 @@
 import { useState } from 'react';
 
-import { Header } from './components/header';
-import { ProductImages } from './components/productImages';
+import { Header } from './components/header/header';
+import { Product } from './components/product/product';
 
 import './App.css';
 
 function App() {
-  const [mainClass, setMainClass] = useState('');
+  const [wrapperClass, setWrapperClass] = useState('');
 
   const menuToggle = () => {
-    setMainClass(mainClass === '' ? 'nav-open' : '');
+    setWrapperClass(wrapperClass === '' ? 'nav-open' : '');
   };
 
   return (
-    <main className={mainClass}>
+    <div className={`App ${wrapperClass}`}>
       <Header menuToggle={menuToggle} />
-      <div className='lg:flex'>
-        <ProductImages />
-        Sneaker Company Fall Limited Edition Sneakers These low-profile sneakers
-        are your perfect casual wear companion. Featuring a durable rubber outer
-        sole, they’ll withstand everything the weather can offer. $125.00 50%
-        $250.00 0 Add to cart
-      </div>
-    </main>
+      <Product />
+    </div>
   );
 }
 
