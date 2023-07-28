@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+import { Header } from './components/header';
+import { ProductImages } from './components/productImages';
+
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mainClass, setMainClass] = useState('');
+
+  const menuToggle = () => {
+    setMainClass(mainClass === '' ? 'nav-open' : '');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className={mainClass}>
+      <Header menuToggle={menuToggle} />
+      <div className='lg:flex'>
+        <ProductImages />
+        Sneaker Company Fall Limited Edition Sneakers These low-profile sneakers
+        are your perfect casual wear companion. Featuring a durable rubber outer
+        sole, they’ll withstand everything the weather can offer. $125.00 50%
+        $250.00 0 Add to cart
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;
