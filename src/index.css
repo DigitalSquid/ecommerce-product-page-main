@@ -8,6 +8,9 @@
   html {
     @apply font-kumbhSans text-grayishBlue;
   }
+  button > svg {
+    display: inline-block;
+  }
   .App::after {
     @apply content-[''] absolute w-screen h-screen bg-blackTransparent top-0 z-[-1] opacity-0 transition-opacity ease-in duration-200;
   }
@@ -22,6 +25,9 @@
 @layer components {
   .hidden-menu {
     @apply fixed w-[66.67%] top-0 left-0 ease-in duration-200 z-10 -translate-x-full;
+  }
+  .v-align-middle {
+    @apply top-1/2 -translate-y-1/2;
   }
 }
 

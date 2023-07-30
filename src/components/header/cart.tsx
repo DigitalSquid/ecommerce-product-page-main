@@ -2,6 +2,6 @@ import { CartIcon } from '../../assets/icons';
 
 export const Cart = () => (
   <div className='cart'>
-    <CartIcon />
+    <CartIcon svgClass='fill-darkGrayishBlue w-[22px]' />
   </div>
 );

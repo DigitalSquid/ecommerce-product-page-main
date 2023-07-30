@@ -9,7 +9,7 @@ interface MenuProps {
 }
 
 export const Header = (props: MenuProps) => (
-  <header className='p-5 flex items-baseline'>
+  <header className='p-5 flex items-center'>
     <button className='mr-4 md:hidden' onClick={props.menuToggle}>
       <MenuIcon />
     </button>
