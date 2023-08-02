@@ -1,7 +1,7 @@
 import Avatar from '../../assets/images/image-avatar.png';
 
 export const User = () => (
-  <div className='user'>
+  <div className='inline-block align-middle'>
     <img
       src={Avatar}
       alt='User avatar'

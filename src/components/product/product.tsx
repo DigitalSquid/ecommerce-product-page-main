@@ -1,9 +1,21 @@
 import { ProductImages } from './productImages';
-import { ProductDetails } from './productDetails';
+import { ProductListing } from './productListing';
 
-export const Product = () => (
+interface ProductProps {
+  addToBasket: () => void;
+  quantityIncrease: () => void;
+  quantityDecrease: () => void;
+  itemQuantity: number;
+}
+
+export const Product = (props: ProductProps) => (
   <main className='lg:flex'>
     <ProductImages />
-    <ProductDetails />
+    <ProductListing
+      addToBasket={props.addToBasket}
+      quantityIncrease={props.quantityIncrease}
+      quantityDecrease={props.quantityDecrease}
+      itemQuantity={props.itemQuantity}
+    />
   </main>
 );

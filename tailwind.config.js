@@ -8,6 +8,7 @@ export default {
         paleOrange: 'hsl(25, 100%, 94%)',
         veryDarkBlue: 'hsl(220, 13%, 13%)',
         darkGrayishBlue: 'hsl(219, 9%, 45%)',
+        grey: 'hsl(228, 3%, 39%)',
         grayishBlue: 'hsl(220, 14%, 75%)',
         lightGrayishBlue: 'hsl(223, 64%, 98%)',
         blackTransparent: 'hsla(0, 0%, 0%, 0.75)',

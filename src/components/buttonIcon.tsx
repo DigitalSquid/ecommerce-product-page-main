@@ -2,7 +2,6 @@ interface ButtonProps {
   icon?: any;
   text?: string;
   buttonClass?: string;
-  // handleClick?: (string) => void;
   handleClick?: () => void;
 }
 
