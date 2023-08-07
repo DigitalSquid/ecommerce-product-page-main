@@ -1,27 +1,27 @@
-import { Navigation } from '../../components/header/navigation';
+import { Navigation } from '@/components/header/navigation';
+import { User } from '@/components/header/user';
+import { Logo, MenuIcon } from '@/assets/icons';
 import { CartIndicator } from './cartIndicator';
 import { Cart } from './cart';
-import { User } from '../../components/header/user';
 
-import { Logo, MenuIcon } from '../../assets/icons';
+import { useProductPage } from '@/contexts/productPageContext';
 
-interface MenuProps {
-  menuToggle(): any;
-  basketQuantity: number;
-}
+export const Header = () => {
+  const { menuToggle } = useProductPage();
 
-export const Header = (props: MenuProps) => (
-  <header className='p-5 flex items-center relative'>
-    <button className='mr-4 md:hidden' onClick={props.menuToggle}>
-      <MenuIcon />
-    </button>
-    <Logo />
-    <h1 className='sr-only'>sneakers</h1>
-    <Navigation menuClose={props.menuToggle} />
-    <div className='ml-auto space-x-4 items-center'>
-      <CartIndicator basketQuantity={props.basketQuantity} />
-      <User />
-    </div>
-    <Cart basketQuantity={props.basketQuantity} />
-  </header>
-);
+  return (
+    <header className='p-5 sm:px-0 sm:pb-0 sm:pt-10 flex max-sm:items-center relative'>
+      <button className='mr-4 sm:hidden' onClick={() => menuToggle()}>
+        <MenuIcon />
+      </button>
+      <Logo />
+      <h1 className='sr-only'>sneakers</h1>
+      <Navigation />
+      <div className='ml-auto space-x-4 sm:space-x-8 items-center sm:-mt-4'>
+        <CartIndicator />
+        <User />
+      </div>
+      <Cart />
+    </header>
+  );
+};

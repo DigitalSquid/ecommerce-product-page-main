@@ -11,14 +11,20 @@
   button > svg {
     display: inline-block;
   }
-  .App::after {
+  .container::after {
     @apply content-[''] absolute w-screen h-screen bg-blackTransparent top-0 z-[-1] opacity-0 transition-opacity ease-in duration-200;
   }
   .nav-open::after {
     @apply z-0 opacity-100;
   }
-  .nav-open header nav {
-    @apply -translate-x-0;
+  .nav-open {
+    @apply overflow-hidden h-screen;
+  }
+  .nav-open nav {
+    @apply -translate-x-0 z-20;
+  }
+  .button-orange {
+    @apply bg-orange w-full text-white font-bold text-center rounded-lg py-3.5 mt-4 space-x-3;
   }
 }
 

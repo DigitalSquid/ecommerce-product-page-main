@@ -1,61 +1,36 @@
-import { useState } from 'react';
-
-import { Plus, Minus, CartIcon } from '../../assets/icons';
+import { Plus, Minus, CartIcon } from '@/assets/icons';
 import { ButtonIcon } from '../buttonIcon';
+import { ProductDetails } from './productDetails';
 
-interface ProductListingProps {
-  addToBasket?: () => void;
-  quantityIncrease: () => void;
-  quantityDecrease: () => void;
-  itemQuantity: number;
-}
+import { useProductPage } from '@/contexts/productPageContext';
 
-export const ProductListing = (props: ProductListingProps) => {
+export const ProductListing = () => {
+  const { changeQuantity, addToCart, itemQuantity } = useProductPage();
+
   return (
-    <article className='p-6'>
-      <hgroup>
-        <p className='uppercase text-orange font-bold text-xs tracking-widest'>
-          Sneaker Company
-        </p>
-        <h1 className='my-4 text-veryDarkBlue text-[27px] font-bold leading-8'>
-          Fall Limited Edition Sneakers
-        </h1>
-      </hgroup>
-      <p className='text-grey text-[15px]'>
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they’ll withstand everything the
-        weather can offer.
-      </p>
-      <div className='my-6 flex gap-x-4 items-center'>
-        <span className='text-[27px] font-bold text-veryDarkBlue'>$125.00</span>
-        <span className='text-orange text-[15px] font-bold bg-paleOrange p-2 leading-none rounded-md'>
-          50%
-        </span>
-        <span className='ml-auto font-bold sfsdf text-[15px]'>
-          <s>$250.00</s>
-        </span>
-      </div>
-      <div className='bg-lightGrayishBlue rounded-xl py-4 px-6 flex justify-between'>
+    <article className='p-6 sm:p-0 sm:pt-14 sm:max-w-md'>
+      <ProductDetails />
+      <div className='sm:flex'>
+        <div className='bg-lightGrayishBlue rounded-xl py-4 px-6 flex justify-between sm:w-1/2'>
+          <ButtonIcon
+            buttonClass=''
+            icon={<Minus />}
+            handleClick={() => changeQuantity('decrement')}
+          />
+          <span className='font-bold text-veryDarkBlue'>{itemQuantity}</span>
+          <ButtonIcon
+            buttonClass=''
+            icon={<Plus />}
+            handleClick={() => changeQuantity('increment')}
+          />
+        </div>
         <ButtonIcon
-          buttonClass=''
-          icon={<Minus />}
-          handleClick={props.quantityDecrease}
-        />
-        <span className='font-bold text-veryDarkBlue'>
-          {props.itemQuantity}
-        </span>
-        <ButtonIcon
-          buttonClass=''
-          icon={<Plus />}
-          handleClick={props.quantityIncrease}
+          buttonClass='button-orange sm:w-1/2'
+          icon={<CartIcon svgClass='fill-white h-[16px] -mt-[3px]' />}
+          text='Add to cart'
+          handleClick={() => addToCart()}
         />
       </div>
-      <ButtonIcon
-        buttonClass='bg-orange w-full text-white font-bold text-center rounded-xl py-4 mt-4 space-x-3'
-        icon={<CartIcon svgClass='fill-white h-[16px] -mt-[3px]' />}
-        text='Add to cart'
-        handleClick={props.addToBasket}
-      />
     </article>
   );
 };

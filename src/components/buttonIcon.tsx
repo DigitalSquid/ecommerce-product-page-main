@@ -6,7 +6,11 @@ interface ButtonProps {
 }
 
 export const ButtonIcon = (props: ButtonProps) => (
-  <button className={props.buttonClass} onClick={() => props.handleClick?.()}>
+  <button
+    type='button'
+    className={props.buttonClass}
+    onClick={() => props.handleClick?.()}
+  >
     {props.icon} <span>{props.text}</span>
   </button>
 );
