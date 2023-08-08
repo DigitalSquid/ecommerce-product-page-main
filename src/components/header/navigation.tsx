@@ -8,7 +8,7 @@ export const Navigation = () => {
   const menuListStyles =
     'bg-white max-sm:h-screen max-sm:pt-20 max-sm:text-black max-sm:font-bold p-5 sm:py-0 sm:ml-6';
   const listItemStyles =
-    'py-2 sm:mx-4 sm:pb-10 sm:pt-0 sm:inline-block sm:text-[15px] border-b-4 border-white hover:border-orange';
+    'py-2 sm:mx-4 sm:pb-10 sm:pt-0 sm:inline-block sm:text-[15px] border-b-4 border-white hover:border-orange hover:text-black';
 
   return (
     <nav className='max-sm:hidden-menu'>

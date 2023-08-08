@@ -24,7 +24,7 @@
     @apply -translate-x-0 z-20;
   }
   .button-orange {
-    @apply bg-orange w-full text-white font-bold text-center rounded-lg py-3.5 mt-4 space-x-3;
+    @apply bg-orange w-full text-white font-bold text-center rounded-lg py-3.5 mt-6 space-x-3;
   }
 }
 

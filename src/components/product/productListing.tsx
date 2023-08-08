@@ -10,14 +10,16 @@ export const ProductListing = () => {
   return (
     <article className='p-6 sm:p-0 sm:pt-14 sm:max-w-md'>
       <ProductDetails />
-      <div className='sm:flex'>
-        <div className='bg-lightGrayishBlue rounded-xl py-4 px-6 flex justify-between sm:w-1/2'>
+      <div className='sm:flex sm:space-x-4'>
+        <div className='bg-lightGrayishBlue rounded-xl py-4 px-6 flex justify-between items-center sm:w-1/3 sm:py-0'>
           <ButtonIcon
             buttonClass=''
             icon={<Minus />}
             handleClick={() => changeQuantity('decrement')}
           />
-          <span className='font-bold text-veryDarkBlue'>{itemQuantity}</span>
+          <span className='font-bold leading-8 text-veryDarkBlue'>
+            {itemQuantity}
+          </span>
           <ButtonIcon
             buttonClass=''
             icon={<Plus />}
@@ -25,8 +27,8 @@ export const ProductListing = () => {
           />
         </div>
         <ButtonIcon
-          buttonClass='button-orange sm:w-1/2'
-          icon={<CartIcon svgClass='fill-white h-[16px] -mt-[3px]' />}
+          buttonClass='button-orange sm:mt-0 sm:w-2/3'
+          icon={<CartIcon svgClass='fill-white -mt-[2px]' />}
           text='Add to cart'
           handleClick={() => addToCart()}
         />
