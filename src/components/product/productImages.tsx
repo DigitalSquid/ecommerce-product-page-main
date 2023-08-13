@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { Previous, Next } from '../../assets/icons';
-import { ButtonIcon } from '../buttonIcon';
+import { ImageNavigationArrow } from './imageNavigationArrows';
 
 import ProductImage1 from '@/assets/images/image-product-1.jpg';
 import ProductImage2 from '@/assets/images/image-product-2.jpg';
@@ -11,9 +10,15 @@ import ProductThumbnail1 from '@/assets/images/image-product-1-thumbnail.jpg';
 import ProductThumbnail2 from '@/assets/images/image-product-2-thumbnail.jpg';
 import ProductThumbnail3 from '@/assets/images/image-product-3-thumbnail.jpg';
 import ProductThumbnail4 from '@/assets/images/image-product-4-thumbnail.jpg';
+import { useProductPage } from '@/contexts/productPageContext';
 
-export const ProductImages = () => {
+interface Props {
+  isLightbox: boolean;
+}
+
+export const ProductImages = (props: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { lightboxToggle } = useProductPage();
 
   const productImages = [
     ProductImage1,
@@ -29,20 +34,24 @@ export const ProductImages = () => {
     ProductThumbnail4,
   ];
 
-  // Should be one function/reducer
-  const indexDecrement = () => {
-    const newIndex = currentIndex - 1;
-    setCurrentIndex(newIndex < 0 ? productImages.length - 1 : newIndex);
+  const changeIndex = (type?: string) => {
+    let newIndex = currentIndex + (type === 'next' ? 1 : -1);
+    newIndex = newIndex < 0 ? productImages.length - 1 : newIndex;
+    newIndex = newIndex > productImages.length - 1 ? 0 : newIndex;
+    setCurrentIndex(newIndex);
   };
 
-  const indexIncrement = () => {
-    const newIndex = currentIndex + 1;
-    setCurrentIndex(newIndex > productImages.length - 1 ? 0 : newIndex);
-  };
+  const thumbnailStyles =
+    'w-[88px] rounded-lg cursor-pointer hover:opacity-40 transition-opacity transition-color';
 
   return (
-    <div className='sm:max-w-md w-full'>
-      <div className='relative h-[300px] sm:h-[445px] sm:rounded-2xl w-full overflow-hidden'>
+    <div className='sm:max-w-md w-full mx-auto'>
+      <div
+        className={`relative h-[300px] sm:h-[445px] w-full max-sm:overflow-hidden ${
+          props.isLightbox ? '' : 'cursor-pointer'
+        }`}
+        onClick={props.isLightbox ? undefined : lightboxToggle}
+      >
         {productImages.map((image, i) => {
           const showCurrentImage = currentIndex === i ? 'opacity-100' : '';
 
@@ -50,25 +59,29 @@ export const ProductImages = () => {
             <img
               src={image}
               key={i}
-              className={`absolute v-align-middle transiton-opacity ease-in duration-500 opacity-0 ${showCurrentImage}`}
+              className={`absolute v-align-middle transiton-opacity ease-in duration-500 opacity-0 sm:rounded-2xl ${showCurrentImage}`}
             />
           );
         })}
-        <ButtonIcon
-          buttonClass='absolute left-4 v-align-middle bg-white w-9 h-9 rounded-full text-center shadow-md sm:hidden'
-          handleClick={indexDecrement}
-          icon={<Previous svgClass='w-[10px] -mt-[3px] -ml-[2px]' />}
-        />
-        <ButtonIcon
-          buttonClass='absolute right-4 v-align-middle bg-white w-9 h-9 rounded-full text-center shadow-md sm:hidden'
-          handleClick={indexIncrement}
-          icon={<Next svgClass='w-[10px] -mt-[3px] ml-[2px]' />}
+        <ImageNavigationArrow
+          changeIndex={changeIndex}
+          isLightbox={props.isLightbox}
         />
       </div>
-      <div className='max-sm:hidden'>
-        {productThumbnails.map((image) => (
-          <img src={image} key={image} />
-        ))}
+      <div className='max-sm:hidden flex space-x-8 mt-8'>
+        {productThumbnails.map((image, i) => {
+          const selectedImageStyles =
+            i === currentIndex ? 'border-orange border-2 border-solid' : '';
+          return (
+            <div key={image} className='bg-white rounded-lg'>
+              <img
+                src={image}
+                className={`${thumbnailStyles} ${selectedImageStyles} `}
+                onClick={() => setCurrentIndex(i)}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

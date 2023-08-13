@@ -9,9 +9,11 @@ import {
 interface ProductPageType {
   cartQuantity: number;
   itemQuantity: number;
-  isNavOpen: boolean;
+  showOverlay: boolean;
+  showLightbox: boolean;
   setCartQuantity: Dispatch<SetStateAction<ProductPageType['cartQuantity']>>;
   menuToggle: () => void;
+  lightboxToggle: () => void;
   addToCart: () => void;
   removeFromCart: () => void;
   changeQuantity: (type: string) => void;
@@ -35,7 +37,8 @@ export default function ProductPageProvider({
   children,
 }: ProdcutPageProviderProps) {
   const [cartQuantity, setCartQuantity] = useState(0);
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [showLightbox, setShowLightbox] = useState(false);
   const [itemQuantity, setItemQuantity] = useState(0);
 
   const changeQuantity = (type: string) => {
@@ -60,7 +63,12 @@ export default function ProductPageProvider({
   };
 
   const menuToggle = () => {
-    setIsNavOpen(!isNavOpen);
+    setShowOverlay(!showOverlay);
+  };
+
+  const lightboxToggle = () => {
+    setShowOverlay(!showOverlay);
+    setShowLightbox(!showLightbox);
   };
 
   const removeFromCart = () => {
@@ -72,9 +80,11 @@ export default function ProductPageProvider({
       value={{
         cartQuantity,
         itemQuantity,
-        isNavOpen,
+        showOverlay,
+        showLightbox,
         setCartQuantity,
         menuToggle,
+        lightboxToggle,
         addToCart,
         removeFromCart,
         changeQuantity,

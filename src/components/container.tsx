@@ -5,13 +5,11 @@ type ContainerProps = {
 };
 
 export const Container = (props: ContainerProps) => {
-  const { isNavOpen } = useProductPage();
-  const navStyle = isNavOpen ? 'nav-open' : '';
+  const { showOverlay } = useProductPage();
+  const overlayStyle = showOverlay ? 'show-overlay' : '';
 
   return (
-    <div
-      className={`container max-w-6xl sm:px-5 mx-auto sm:divide-y ${navStyle}`}
-    >
+    <div className={`container max-w-6xl mx-auto sm:divide-y ${overlayStyle}`}>
       {props.children}
     </div>
   );

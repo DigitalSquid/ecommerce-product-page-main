@@ -10,7 +10,7 @@ export const Header = () => {
   const { menuToggle } = useProductPage();
 
   return (
-    <header className='p-5 sm:px-0 sm:pb-0 sm:pt-10 flex max-sm:items-center relative'>
+    <header className='p-5 sm:px-0 sm:pb-0 sm:pt-10 sm:mx-5 flex max-sm:items-center relative'>
       <button className='mr-4 sm:hidden' onClick={() => menuToggle()}>
         <MenuIcon />
       </button>

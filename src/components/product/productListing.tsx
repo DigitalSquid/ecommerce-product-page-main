@@ -8,7 +8,7 @@ export const ProductListing = () => {
   const { changeQuantity, addToCart, itemQuantity } = useProductPage();
 
   return (
-    <article className='p-6 sm:p-0 sm:pt-14 sm:max-w-md'>
+    <article className='p-6 sm:p-0 sm:pt-14 sm:max-w-md mx-auto'>
       <ProductDetails />
       <div className='sm:flex sm:space-x-4'>
         <div className='bg-lightGrayishBlue rounded-xl py-4 px-6 flex justify-between items-center sm:w-1/3 sm:py-0'>

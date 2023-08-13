@@ -12,16 +12,16 @@
     display: inline-block;
   }
   .container::after {
-    @apply content-[''] absolute w-screen h-screen bg-blackTransparent top-0 z-[-1] opacity-0 transition-opacity ease-in duration-200;
+    @apply content-[''] absolute w-screen h-screen bg-blackTransparent top-0 left-0 z-[-1] opacity-0 transition-opacity ease-in duration-200;
   }
-  .nav-open::after {
+  .show-overlay::after {
     @apply z-0 opacity-100;
   }
-  .nav-open {
+  .show-overlay {
     @apply overflow-hidden h-screen;
   }
-  .nav-open nav {
-    @apply -translate-x-0 z-20;
+  .show-overlay nav {
+    @apply -translate-x-0;
   }
   .button-orange {
     @apply bg-orange w-full text-white font-bold text-center rounded-lg py-3.5 mt-6 space-x-3;
@@ -50,4 +50,5 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  border: 0;
 }
