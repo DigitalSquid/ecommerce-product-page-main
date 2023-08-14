@@ -57,6 +57,7 @@ export const ProductImages = (props: Props) => {
 
           return (
             <img
+              alt={`Product Image ${i}`}
               src={image}
               key={i}
               className={`absolute v-align-middle transiton-opacity ease-in duration-500 opacity-0 sm:rounded-2xl ${showCurrentImage}`}
@@ -75,6 +76,7 @@ export const ProductImages = (props: Props) => {
           return (
             <div key={image} className='bg-white rounded-lg'>
               <img
+                alt={`Product Thumbnail ${i}`}
                 src={image}
                 className={`${thumbnailStyles} ${selectedImageStyles} `}
                 onClick={() => setCurrentIndex(i)}

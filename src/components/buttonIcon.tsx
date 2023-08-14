@@ -10,6 +10,7 @@ export const ButtonIcon = (props: ButtonProps) => (
     type='button'
     className={props.buttonClass}
     onClick={() => props.handleClick?.()}
+    aria-label='icon'
   >
     {props.icon} <span>{props.text}</span>
   </button>
