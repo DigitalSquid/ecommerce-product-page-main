@@ -29,13 +29,13 @@ export function useProductPage() {
   return ctx;
 }
 
-interface ProdcutPageProviderProps {
+interface ProductPageProviderProps {
   children: React.ReactElement | React.ReactElement[];
 }
 
 export default function ProductPageProvider({
   children,
-}: ProdcutPageProviderProps) {
+}: ProductPageProviderProps) {
   const [cartQuantity, setCartQuantity] = useState(0);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showLightbox, setShowLightbox] = useState(false);
